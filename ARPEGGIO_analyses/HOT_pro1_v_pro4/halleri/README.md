@@ -1,0 +1,8 @@
+# Data
+
+ - `LL_hal_G1_1`: `TBD`
+ - `LL_hal_G1_2`: `TBD`
+ - `LL_hal_G1_3`: `TBD`
+ - `LL_hal_G4_1`: `TBD`
+ - `LL_hal_G4_2`: `TBD`
+ - `LL_hal_G4_3`: `TBD`
