@@ -10,4 +10,8 @@ To find which script is related to which result:
  - `Supplementary Figure 13` was obtained with
  - `Supplementary Figure 14` was obtained with
  - `Supplementary Figure 15` was obtained with
- - `Supplementary Table 1` was obtained with 
+ - `Supplementary Figure 16` was obtained with
+ - `Supplementary Figure 17 & 18` was obtained with `RNAseq_edgeR_fullReport.Rmd`
+ - `Supplementary Figure 19` was obtained with
+ - `Supplementary Figure 20` was obtained with
+ - `Supplementary Table 1` was obtained with
