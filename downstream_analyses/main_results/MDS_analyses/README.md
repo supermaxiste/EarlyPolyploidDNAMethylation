@@ -52,7 +52,7 @@ The starting point of MDS analyses are `cov` files from Bismark which can be obt
 
   Output files from this step for each sample in each condition can be obtained at the following link: TBA
 
-   4) Merged files can now be merged further in four final files (2 conditions x 2 progenitors' sides). We provide an extract from our own scripts for one progenitor side and one condition:
+   4) Merged files can now be merged further in four final files (2 conditions x 2 progenitors' sides). We provide an extract from our own scripts for one progenitor side and both conditions (HM = cold, LL = hot) since the number of replicates is different:
 
    ```
    # halleri side, HM conditions
@@ -73,9 +73,28 @@ The starting point of MDS analyses are `cov` files from Bismark which can be obt
 
    #Final ordering in the file:
    #halleri_G1+G4  HM_RS7K_G1+G4   HM_ALK_G1+G4    HM_TKS_G1+5
+
+   # halleri side, LL conditions
+
+   join -j 1 -o 1.1,1.2,1.3,1.4,1.5,1.6,1.7,2.2,2.3,2.4,2.5,2.6,2.7 LL_RS7_G1_123hal_minimal.cov LL_RS7K_G4_123hal_minimal.cov > LL_synthe_allgen_hal_minimal.cov
+
+   join -j 1 -o 1.1,1.2,1.3,1.4,1.5,1.6,1.7,2.2,2.3,2.4,2.5,2.6,2.7 LL_ALK_G1_123hal_minimal.cov LL_ALK_G4_123hal_minimal.cov > LL_ALK_allgen_hal_minimal.cov
+
+   join -j 1 -o 1.1,1.2,1.3,1.4,1.5,1.6,1.7,2.2,2.3,2.4,2.5,2.6,2.7 LL_TKS_G1_123hal_minimal.cov LL_TKS_G5_123hal_minimal.cov > LL_TKS_allgen_hal_minimal.cov
+
+   join -j 1 -o 1.1,1.2,1.3,1.4,1.5,2.2,2.3,2.4,2.5 LL_hal_G1_12_minimal.cov LL_hal_G4_12_minimal.cov > LL_pro_allgen_hal_minimal.cov
+
+   join -j 1 -o 1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13 LL_pro_allgen_hal_minimal.cov LL_synthe_allgen_hal_minimal.cov > LL_prosyn_hal.cov
+
+   join -j 1 -o 1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13 LL_ALK_allgen_hal_minimal.cov LL_TKS_allgen_hal_minimal.cov > LL_nat_hal.cov
+
+   join -j 1 -o 1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23,2.24,2.25 LL_prosyn_hal.cov LL_nat_hal.cov > LL_allhal.cov
+
+   #Final ordering in the file:
+   #halleri_G1+G4  HM_RS7K_G1+G4   HM_ALK_G1+G4    HM_TKS_G1+5
    ```  
 
-   It's important to keep in mind the way files are merged to know which column represents which sample. In all of our files the order is the following:
+   It's important to keep in mind the way files are merged to know which column represents which sample. In all of our files the order is the following. For cold conditions:
 
     - Column 1: cytosine coordinates
     - Columns 2-7: Progenitor generation 1 (3 replicates)
@@ -86,5 +105,30 @@ The starting point of MDS analyses are `cov` files from Bismark which can be obt
     - Columns 32-37: _A. kamchatica_ natural generation 4, Alaska line (3 replicates)
     - Columns 38-43: _A. kamchatica_ natural generation 1, Takashima line (3 replicates)
     - Columns 44-49: _A. kamchatica_ natural generation 4, Takashima line (3 replicates)
+
+   For hot conditions:
+
+   - Column 1: cytosine coordinates
+   - Columns 2-5: Progenitor generation 1 (2 replicates)
+   - Columns 6-9: Progenitor generation 4 (2 replicates)
+   - Columns 10-15: _A. kamchatica_ synthetic generation 1 (3 replicates)
+   - Columns 16-21: _A. kamchatica_ synthetic generation 4 (3 replicates)
+   - Columns 22-27: _A. kamchatica_ natural generation 1, Alaska line (3 replicates)
+   - Columns 28-33: _A. kamchatica_ natural generation 4, Alaska line (3 replicates)
+   - Columns 34-39: _A. kamchatica_ natural generation 1, Takashima line (3 replicates)
+   - Columns 40-45: _A. kamchatica_ natural generation 4, Takashima line (3 replicates)
+
+
+  5) The last step is to filter all cytosines that have >=3 coverage. We use the same output files from the previous step:
+
+   ```
+   #HM
+
+   awk -F " " '{ if(($3 >= 3) && ($5 >= 3) && ($7 >= 3) && ($9 >= 3) && ($11 >= 3) && ($13 >= 3) && ($15 >= 3) && ($17 >= 3) && ($19 >= 3) && ($21 >= 3) && ($23 >= 3) && ($25 >= 3) && ($27 >= 3) && ($29 >= 3) && ($31 >= 3) && ($33 >= 3) && ($35 >= 3) && ($37 >= 3) && ($39 >= 3) && ($41 >= 3) && ($43 >= 3) && ($45 >= 3) && ($47 >= 3) && ($49 >= 3)) { print } }' ${data}HM_allhal.cov > HM_allhal_filtered.cov
+
+   #LL
+
+   awk -F " " '{ if(($3 >= 3) && ($5 >= 3) && ($7 >= 3) && ($9 >= 3) && ($11 >= 3) && ($13 >= 3) && ($15 >= 3) && ($17 >= 3) && ($19 >= 3) && ($21 >= 3) && ($23 >= 3) && ($25 >= 3) && ($27 >= 3) && ($29 >= 3) && ($31 >= 3) && ($33 >= 3) && ($35 >= 3) && ($37 >= 3) && ($39 >= 3) && ($41 >= 3) && ($43 >= 3) && ($45 >= 3))  { print } }' ${data}LL_allhal.cov > LL_allhal_filtered.cov
+   ```
 
   The outputs from this step can be found at this link: TBA

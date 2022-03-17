@@ -21,11 +21,14 @@ DMRs_overlap <- function(hal_CG_all,
   
   ### Paths to annotation files to be modified according to new system!!!!
   
-  Ahal_v2_2 <- read.delim("~/OneDrive/PhD/Project/bs_data/Ahal_genome/Ahal_v2_2.gff",
+  Ahal_v2_2 <- read.delim("Ahal_v2_2.gff",
                                         header=FALSE,
                                         col.names = c("scaffold", "tool", "context", "start", "end", "number",
                                                       "strand", "dot", "extra"))
-  Alyr_v2_2 <- read.delim("~/OneDrive/PhD/Project/bs_data/Alyr_genome/Alyr_v2_2_renamed.gff", 
+  
+  ###  Alyr scaffolds are renamed to not overlap with A. halleri scaffolds
+  
+  Alyr_v2_2 <- read.delim("Alyr_v2_2_renamed.gff", 
                                                 header=FALSE,
                                                 col.names = c("scaffold", "tool", "context", "start", "end", "number",
                                                               "strand", "dot", "extra"))
@@ -371,7 +374,7 @@ DMRs_overlap_special <- function(dmrseq_output_CG_AvB,
 
 ## Import data
 
-setwd("~/OneDrive/PhD/Project/Chapter_3/DMR_results/ARPEGGIO_results_syn1Vpro1_HM/dmrseq")
+setwd("ARPEGGIO_results_syn1Vpro1_HM/dmrseq")
 dmrseq_output_CG_hal <- fread("CG_context/parent1_v_allo.txt")
 dmrseq_output_CHG_hal <- fread("CHG_context/parent1_v_allo.txt")
 dmrseq_output_CHH_hal <- fread("CHH_context/parent1_v_allo.txt")
@@ -391,7 +394,7 @@ HM_syn1_v_pro1 <- DMRs_overlap(hal_CG_all = dmrseq_output_CG_hal,
 
 ## Import data
 
-setwd("~/OneDrive/PhD/Project/Chapter_3/DMR_results/ARPEGGIO_results_syn4Vpro1_HM/dmrseq")
+setwd("ARPEGGIO_results_syn4Vpro1_HM/dmrseq")
 dmrseq_output_CG_hal <- fread("CG_context/parent1_v_allo.txt")
 dmrseq_output_CHG_hal <- fread("CHG_context/parent1_v_allo.txt")
 dmrseq_output_CHH_hal <- fread("CHH_context/parent1_v_allo.txt")
@@ -411,7 +414,7 @@ HM_syn4_v_pro1 <- DMRs_overlap(hal_CG_all = dmrseq_output_CG_hal,
 
 ## Import data
 
-setwd("~/OneDrive/PhD/Project/Chapter_3/DMR_results/ARPEGGIO_results_syn1Vpro1_LL/dmrseq")
+setwd("ARPEGGIO_results_syn1Vpro1_LL/dmrseq")
 dmrseq_output_CG_hal <- fread("CG_context/parent1_v_allo.txt")
 dmrseq_output_CHG_hal <- fread("CHG_context/parent1_v_allo.txt")
 dmrseq_output_CHH_hal <- fread("CHH_context/parent1_v_allo.txt")
@@ -431,7 +434,7 @@ LL_syn1_v_pro1 <-DMRs_overlap(hal_CG_all = dmrseq_output_CG_hal,
 
 ## Import data
 
-setwd("~/OneDrive/PhD/Project/Chapter_3/DMR_results/ARPEGGIO_results_syn4Vpro1_LL/dmrseq")
+setwd("ARPEGGIO_results_syn4Vpro1_LL/dmrseq")
 dmrseq_output_CG_hal <- fread("CG_context/parent1_v_allo.txt")
 dmrseq_output_CHG_hal <- fread("CHG_context/parent1_v_allo.txt")
 dmrseq_output_CHH_hal <- fread("CHH_context/parent1_v_allo.txt")

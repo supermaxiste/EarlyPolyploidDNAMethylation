@@ -83,7 +83,7 @@ DMRs_karyoploter <- function(dmrseq_output, side, ref){
 
     ### Import agp file of the corresponding assembly
 
-  agp <- read.delim("~/OneDrive/PhD/Project/Chapter2/AssemblyMapping/Ahal_mm2_tiling.agp", header=FALSE, comment.char="#")
+  agp <- read.delim("Ahal_mm2_tiling.agp", header=FALSE, comment.char="#")
 
   names(agp) <- c("new_scaffold", "start", "end", "n", "WU", "old_scaffold", "type", "length", "orientiation")
 
@@ -225,7 +225,7 @@ DMRs_karyoploter <- function(dmrseq_output, side, ref){
 
   else {
 
-    agp_lyr <- read.delim("~/OneDrive/PhD/Project/Chapter2/AssemblyMapping/Alyr_mm2_tiling.agp", header=FALSE, comment.char="#")
+    agp_lyr <- read.delim("Alyr_mm2_tiling.agp", header=FALSE, comment.char="#")
 
     names(agp_lyr) <- c("new_scaffold", "start", "end", "n", "WU", "old_scaffold", "type", "length", "orientiation")
 
@@ -409,7 +409,7 @@ DMRs_karyoploter_special <- function(dmrseq_output_CG_AvB,
 
 # HM_syn1Vpro1
 
-setwd("~/OneDrive/PhD/Project/Chapter_3/DMR_results/ARPEGGIO_results_syn1Vpro1_HM/dmrseq")
+setwd("ARPEGGIO_results_syn1Vpro1_HM/dmrseq")
 
 dmrseq_output_CG_hal <- fread("CG_context/parent1_v_allo.txt")
 dmrseq_output_CHG_hal <- fread("CHG_context/parent1_v_allo.txt")
@@ -436,7 +436,7 @@ HM_syn1_v_lyr1 <- DMRs_karyoploter(dmrseq_output = dmrseq_output_all_lyr,
                                    ref = "ok")
 
 # HM_syn4Vpro1
-setwd("~/OneDrive/PhD/Project/Chapter_3/DMR_results/ARPEGGIO_results_syn4Vpro1_HM/dmrseq")
+setwd("ARPEGGIO_results_syn4Vpro1_HM/dmrseq")
 
 dmrseq_output_CG_hal <- fread("CG_context/parent1_v_allo.txt")
 dmrseq_output_CHG_hal <- fread("CHG_context/parent1_v_allo.txt")
@@ -465,7 +465,7 @@ HM_syn4_v_lyr1 <- DMRs_karyoploter(dmrseq_output = dmrseq_output_all_lyr,
 
 # LL_syn1Vpro1
 
-setwd("~/OneDrive/PhD/Project/Chapter_3/DMR_results/ARPEGGIO_results_syn1Vpro1_LL/dmrseq")
+setwd("ARPEGGIO_results_syn1Vpro1_LL/dmrseq")
 
 dmrseq_output_CG_hal <- fread("CG_context/parent1_v_allo.txt")
 dmrseq_output_CHG_hal <- fread("CHG_context/parent1_v_allo.txt")
@@ -492,7 +492,7 @@ LL_syn1_v_lyr1 <- DMRs_karyoploter(dmrseq_output = dmrseq_output_all_lyr,
                                    ref = "ok")
 
 # LL_syn4Vpro1
-setwd("~/OneDrive/PhD/Project/Chapter_3/DMR_results/ARPEGGIO_results_syn4Vpro1_LL/dmrseq")
+setwd("ARPEGGIO_results_syn4Vpro1_LL/dmrseq")
 
 dmrseq_output_CG_hal <- fread("CG_context/parent1_v_allo.txt")
 dmrseq_output_CHG_hal <- fread("CHG_context/parent1_v_allo.txt")
